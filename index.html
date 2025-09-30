@@ -7,7 +7,7 @@
     <style>
         /* Basic Reset */
         * {
-            margin: 0;
+            margin: 0; 
             padding: 0;
             box-sizing: border-box;
             font-family: 'Montserrat', 'Arial', sans-serif;
@@ -662,6 +662,70 @@
                 transform: none;
             }
         }
+        
+        /* Studio Section */
+        .studio {
+            background-color: #ede7f6;
+            padding: 6rem 0;
+        }
+        
+        .studio-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            height: 300px;
+            position: relative;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 1.5rem 1rem 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 768px) {
+            .studio-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-item {
+                height: 250px;
+            }
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -680,6 +744,7 @@
                     <li><a href="#home">Inicio</a></li>
                     <li><a href="#about">Sobre Mí</a></li>
                     <li><a href="#services">Clases</a></li>
+                    <li><a href="#studio">Mi Studio</a></li>
                     <li><a href="#pricing">Precios</a></li>
                     <li><a href="#testimonials">Testimonios</a></li>
                     <li><a href="#location">Ubicación</a></li>
@@ -719,7 +784,7 @@
             <h2 class="section-title">Tu Coach Personal</h2>
             <div class="about-content">
                 <div class="about-img">
-                    <img src="img/1000046455.jpg" alt="Karina Zuñiga - Entrenadora Personal">
+                    <img src="img/1000012320.jpg" alt="Karina Zuñiga - Entrenadora Personal">
                 </div>
                 <div class="about-text">
                     <h3>Karina Zuñiga</h3>
@@ -759,7 +824,39 @@
             </div>
         </div>
     </section>
-
+        <!-- New Studio Section -->
+    <section id="studio" class="studio">
+        <div class="container">
+            <h2 class="section-title">Mi Studio</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; font-size: 1.1rem;">
+                Un espacio diseñado exclusivamente para tu comodidad y bienestar. Mi estudio boutique ofrece un ambiente íntimo, 
+                limpio y equipado con todo lo necesario para que disfrutes de una experiencia de entrenamiento personalizada.
+            </p>
+            <div class="studio-gallery">
+                <div class="gallery-item">
+                    <img src="img/studio_1.png" alt="Vista general del estudio">
+                    <div class="gallery-caption">
+                        <h3>Espacio Principal</h3>
+                        <p>Área amplia y bien iluminada para tus entrenamientos</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="img/studio_2.png" alt="Equipamiento del estudio">
+                    <div class="gallery-caption">
+                        <h3>Equipamiento</h3>
+                        <p>Implementos de calidad para todos los tipos de entrenamiento</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="img/studio_3.jpg" alt="Área de pilates">
+                    <div class="gallery-caption">
+                        <h3>Zona de Pilates</h3>
+                        <p>Espacio dedicado para prácticas de pilates mat</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section id="pricing" class="pricing">
         <div class="container">
             <h2 class="section-title">Planes y Precios</h2>
