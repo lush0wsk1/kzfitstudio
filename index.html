@@ -25,26 +25,27 @@
             height: 60px;
             bottom: 40px;
             right: 40px;
-            background-color: #25d366;
+            background-color: #5e35b1;
             color: #FFF;
             border-radius: 50px;
-            text-align: center;
             font-size: 30px;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(94, 53, 177, 0.4);
             z-index: 100;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s;
+            text-decoration: none;
         }
         
         .whatsapp-float:hover {
-            background-color: #128C7E;
+            background-color: #f8bbd0;
+            color: #ad1457;
             transform: scale(1.1);
         }
         
         .whatsapp-float i {
-            margin-top: 5px;
+            line-height: 1;
         }
         
         /* Header Styles */
@@ -164,6 +165,48 @@
         .menu-btn.open .menu-btn__burger::after {
             transform: rotate(-45deg) translate(35px, 35px);
             background: white;
+        }
+        
+        /* Language Toggle */
+        .lang-btn {
+            background: transparent;
+            color: #5e35b1;
+            border: 2px solid #5e35b1;
+            border-radius: 20px;
+            padding: 0.25rem 0.75rem;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-left: 2rem;
+        }
+        
+        .lang-btn:hover {
+            background: #5e35b1;
+            color: white;
+        }
+        
+        .mobile-lang-btn {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            border-radius: 20px;
+            padding: 0.5rem 1.5rem;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 2rem;
+            width: 100%;
+        }
+        
+        .mobile-lang-btn:hover {
+            background: white;
+            color: #5e35b1;
         }
         
         /* Mobile Menu */
@@ -335,6 +378,16 @@
         .about-text p {
             margin-bottom: 1.5rem;
             line-height: 1.8;
+        }
+        
+        .about-text ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.2rem;
+            line-height: 1.8;
+        }
+        
+        .about-text ul li {
+            margin-bottom: 0.5rem;
         }
         
         /* Services Section */
@@ -741,15 +794,16 @@
             <nav>
                 <div class="logo">KZ.Fit Studio</div>
                 <ul class="nav-links">
-                    <li><a href="#home">Inicio</a></li>
-                    <li><a href="#about">Sobre Mí</a></li>
-                    <li><a href="#services">Clases</a></li>
-                    <li><a href="#studio">Mi Studio</a></li>
-                    <li><a href="#pricing">Precios</a></li>
-                    <li><a href="#testimonials">Testimonios</a></li>
-                    <li><a href="#location">Ubicación</a></li>
-                    <li><a href="#contact">Contacto</a></li>
+                    <li><a href="#home" data-i18n="nav-home">Inicio</a></li>
+                    <li><a href="#about" data-i18n="nav-about">Sobre Mí</a></li>
+                    <li><a href="#services" data-i18n="nav-classes">Clases</a></li>
+                    <li><a href="#studio" data-i18n="nav-studio">Mi Studio</a></li>
+                    <li><a href="#pricing" data-i18n="nav-pricing">Precios</a></li>
+                    <li><a href="#testimonials" data-i18n="nav-testimonials">Testimonios</a></li>
+                    <li><a href="#location" data-i18n="nav-location">Ubicación</a></li>
+                    <li><a href="#contact" data-i18n="nav-contact">Contacto</a></li>
                 </ul>
+                <button class="lang-btn" onclick="toggleLanguage()" id="lang-btn">EN</button>
                 <button class="menu-btn">
                     <span class="menu-btn__burger"></span>
                 </button>
@@ -760,37 +814,43 @@
     <!-- Mobile Menu -->
     <div class="mobile-nav">
         <ul class="mobile-nav-links">
-            <li><a href="#home">Inicio</a></li>
-            <li><a href="#about">Sobre Mí</a></li>
-            <li><a href="#services">Clases</a></li>
-            <li><a href="#pricing">Precios</a></li>
-            <li><a href="#testimonials">Testimonios</a></li>
-            <li><a href="#location">Ubicación</a></li>
-            <li><a href="#contact">Contacto</a></li>
+            <li><a href="#home" data-i18n="nav-home">Inicio</a></li>
+            <li><a href="#about" data-i18n="nav-about">Sobre Mí</a></li>
+            <li><a href="#services" data-i18n="nav-classes">Clases</a></li>
+            <li><a href="#pricing" data-i18n="nav-pricing">Precios</a></li>
+            <li><a href="#testimonials" data-i18n="nav-testimonials">Testimonios</a></li>
+            <li><a href="#location" data-i18n="nav-location">Ubicación</a></li>
+            <li><a href="#contact" data-i18n="nav-contact">Contacto</a></li>
         </ul>
+        <button class="mobile-lang-btn" onclick="toggleLanguage()" id="mobile-lang-btn">EN</button>
     </div>
     <div class="overlay"></div>
 
     <section id="home" class="hero">
         <div class="container hero-content">
             <h1>KZ.Fit Studio</h1>
-            <p>Experiencia de fitness boutique con entrenamientos personalizados, exclusivo para mujeres en un ambiente cómodo y libre de juicios.</p>
-            <a href="#contact" class="btn">Reserva tu Clase</a>
+            <p data-i18n="hero-subtitle">Experiencia de fitness boutique con entrenamientos personalizados, exclusivo para mujeres en un ambiente cómodo y libre de juicios.</p>
+            <a href="#contact" class="btn" data-i18n="hero-btn">Reserva tu Clase</a>
         </div>
     </section>
 
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title">Tu Coach Personal</h2>
+            <h2 class="section-title" data-i18n="about-title">Tu Coach Personal</h2>
             <div class="about-content">
                 <div class="about-img">
                     <img src="img/1000030633.JPG" alt="Karina Zuñiga - Entrenadora Personal">
                 </div>
                 <div class="about-text">
                     <h3>Karina Zuñiga</h3>
-                    <p>Preparadora Física Universidad Sek. Instructora de Pilates. Formación en Técnicas de Gimnasia Hipopresiva. Curso en entrenamiento de circuitos de Alta Intensidad HIIT.</p>
-                    <p>Me encantaría compartir la visión del ejercicio físico como una experiencia de bienestar con clases dinámicas y llenas de energía.</p>
-                    <p>Mi misión es que el ejercicio se convierta en tu herramienta para sentirte más fuerte, con más confianza y mucha más energía para tu vida diaria. ¡Trabajemos juntas!"</p>
+                    <ul data-i18n="about-p1">
+                        <li>Preparadora Física</li>
+                        <li>Instructora Especializada en el Método Pilates</li>
+                        <li>Certificación en Técnicas de Gimnasia Hipopresiva</li>
+                        <li>Especialista en Entrenamiento de Intervalos de Alta Intensidad (HIIT)</li>
+                    </ul>
+                    <p data-i18n="about-p2">Me encantaría compartir la visión del ejercicio físico como una experiencia de bienestar con clases dinámicas y llenas de energía.</p>
+                    <p data-i18n="about-p3">Mi misión es que el ejercicio se convierta en tu herramienta para sentirte más fuerte, con más confianza y mucha más energía para tu vida diaria. ¡Trabajemos juntas!</p>
                 </div>
             </div>
         </div>
@@ -798,28 +858,28 @@
 
     <section id="services" class="services">
         <div class="container">
-            <h2 class="section-title">Nuestras Clases</h2>
+            <h2 class="section-title" data-i18n="services-title">Nuestras Clases</h2>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-balance-scale"></i>
                     </div>
-                    <h3>Barré</h3>
-                    <p>Clases que integran movimientos de ballet y pilates creando una rutina de entrenamiento que ¡quema!. Tus aliados serán las bandas, tobilleras y la barra donde aprenderás a sostener tu eje y propio peso.</p>
+                    <h3 data-i18n="service-barre-title">Barré</h3>
+                    <p data-i18n="service-barre-desc">Clases que integran movimientos de ballet y pilates creando una rutina de entrenamiento que ¡quema!. Tus aliados serán las bandas, tobilleras y la barra donde aprenderás a sostener tu eje y propio peso.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-dumbbell"></i>
                     </div>
-                    <h3>Circuitos de Fuerza</h3>
-                    <p>Cada ejercicio se realiza durante un periodo de tiempo con breves descansos entre cada uno. Una vez completada la serie, se repite el circuito varias veces. Será un reto a tu fuerza y resistencia.</p>
+                    <h3 data-i18n="service-circuit-title">Circuitos de Fuerza</h3>
+                    <p data-i18n="service-circuit-desc">Cada ejercicio se realiza durante un periodo de tiempo con breves descansos entre cada uno. Una vez completada la serie, se repite el circuito varias veces. Será un reto a tu fuerza y resistencia.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-spa"></i>
                     </div>
-                    <h3>Pilates Mat/Wunda</h3>
-                    <p>Trabajamos con ejercicios y movimientos coordinados sobre el mat, sumando retos de equilibrio y estabilidad para progresar con diversos implementos que harán que tu clase pase volando.</p>
+                    <h3 data-i18n="service-pilates-title">Pilates Mat/Wunda</h3>
+                    <p data-i18n="service-pilates-desc">Trabajamos con ejercicios y movimientos coordinados sobre el mat, sumando retos de equilibrio y estabilidad para progresar con diversos implementos que harán que tu clase pase volando.</p>
                 </div>
             </div>
         </div>
@@ -827,8 +887,8 @@
         <!-- New Studio Section -->
     <section id="studio" class="studio">
         <div class="container">
-            <h2 class="section-title">Mi Studio</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; font-size: 1.1rem;">
+            <h2 class="section-title" data-i18n="studio-title">Mi Studio</h2>
+            <p data-i18n="studio-desc" style="text-align: center; max-width: 800px; margin: 0 auto 2rem; font-size: 1.1rem;">
                 Un espacio diseñado exclusivamente para tu comodidad y bienestar. Mi Studio boutique ofrece un ambiente íntimo, 
                 limpio y equipado con todo lo necesario para que disfrutes de una experiencia de entrenamiento personalizada.
             </p>
@@ -847,42 +907,42 @@
     </section>
     <section id="pricing" class="pricing">
         <div class="container">
-            <h2 class="section-title">Planes y Precios</h2>
+            <h2 class="section-title" data-i18n="pricing-title">Planes y Precios</h2>
             <div class="pricing-grid">
                 <div class="pricing-card">
-                    <h3>4 Clases</h3>
-                    <div class="price">$53.000</div>
+                    <h3 data-i18n="pricing-4-title">4 Clases</h3>
+                    <div class="price" data-i18n="pricing-4-price">$53.000</div>
                     <ul class="features">
-                        <li>1 vez por semana</li>
-                        <li>Sesión de 50 minutos</li>
-                        <li>Informe de valoración física</li>
-                        <li>Seguimiento de tus avances</li>
+                        <li data-i18n="pricing-4-feat1">1 vez por semana</li>
+                        <li data-i18n="pricing-4-feat2">Sesión de 50 minutos</li>
+                        <li data-i18n="pricing-4-feat3">Informe de valoración física</li>
+                        <li data-i18n="pricing-4-feat4">Seguimiento de tus avances</li>
                     </ul>
-                    <a href="#contact" class="btn">Reservar</a>
+                    <a href="#contact" class="btn" data-i18n="pricing-btn">Reservar</a>
                 </div>
                 
                 <div class="pricing-card featured">
-                    <h3>8 Clases</h3>
-                    <div class="price">$91.000</div>
+                    <h3 data-i18n="pricing-8-title">8 Clases</h3>
+                    <div class="price" data-i18n="pricing-8-price">$91.000</div>
                     <ul class="features">
-                        <li>2 veces por semana</li>
-                        <li>Sesión de 50 minutos</li>
-                        <li>Informe de valoración física</li>
-                        <li>Seguimiento de tus avances</li>
+                        <li data-i18n="pricing-8-feat1">2 veces por semana</li>
+                        <li data-i18n="pricing-8-feat2">Sesión de 50 minutos</li>
+                        <li data-i18n="pricing-8-feat3">Informe de valoración física</li>
+                        <li data-i18n="pricing-8-feat4">Seguimiento de tus avances</li>
                     </ul>
-                    <a href="#contact" class="btn">Reservar</a>
+                    <a href="#contact" class="btn" data-i18n="pricing-btn">Reservar</a>
                 </div>
                 
                 <div class="pricing-card">
-                    <h3>12 Clases</h3>
-                    <div class="price">$133.000</div>
+                    <h3 data-i18n="pricing-12-title">12 Clases</h3>
+                    <div class="price" data-i18n="pricing-12-price">$133.000</div>
                     <ul class="features">
-                        <li>3 veces por semana</li>
-                        <li>Sesión de 50 minutos</li>
-                        <li>Informe de valoración física</li>
-                        <li>Seguimiento de tus avances</li>
+                        <li data-i18n="pricing-12-feat1">3 veces por semana</li>
+                        <li data-i18n="pricing-12-feat2">Sesión de 50 minutos</li>
+                        <li data-i18n="pricing-12-feat3">Informe de valoración física</li>
+                        <li data-i18n="pricing-12-feat4">Seguimiento de tus avances</li>
                     </ul>
-                    <a href="#contact" class="btn">Reservar</a>
+                    <a href="#contact" class="btn" data-i18n="pricing-btn">Reservar</a>
                 </div>
             </div>
         </div>
@@ -890,46 +950,46 @@
 
     <section id="testimonials" class="testimonials">
         <div class="container">
-            <h2 class="section-title">Testimonios</h2>
+            <h2 class="section-title" data-i18n="testimonials-title">Testimonios</h2>
             <div class="testimonial-grid">
                 <div class="testimonial-card">
-                    <p>"Sus clases son dinámicas, me encanta el concepto personalizado porque corrige, es atenta a dar variaciones en el ejercicio y mantiene seguimiento del progreso, y voy vestida de la manera más cómoda posible."</p>
+                    <p data-i18n="testimonial-1">"Sus clases son dinámicas, me encanta el concepto personalizado porque corrige, es atenta a dar variaciones en el ejercicio y mantiene seguimiento del progreso, y voy vestida de la manera más cómoda posible."</p>
                     <div class="client-info">
-                        <p class="client-name">- Laura Gib</p>
-                        <p>Circuitos de fuerza</p>
+                        <p class="client-name" data-i18n="testimonial-1-name">- Laura Gib</p>
+                        <p data-i18n="testimonial-1-tag">Circuitos de fuerza</p>
                     </div>
                 </div>
                 <div class="testimonial-card">
-                    <p>"¡La mejor coach! Sus clases son exigentes y con mucha preocupación por las necesidades y capacidades de cada alumna. Se nota su gran preparación haciendo clases variadas y entretenidas. ¡Super recomendada!"</p>
+                    <p data-i18n="testimonial-2">"¡La mejor coach! Sus clases son exigentes y con mucha preocupación por las necesidades y capacidades de cada alumna. Se nota su gran preparación haciendo clases variadas y entretenidas. ¡Super recomendada!"</p>
                     <div class="client-info">
-                        <p class="client-name">- Irene A.</p>
+                        <p class="client-name" data-i18n="testimonial-2-name">- Irene A.</p>
                     </div>
                 </div>
                 <div class="testimonial-card">
-                    <p>"Los ejercicios postparto que trabajo con Karina son lo que buscaba para dar fuerza a mi abdomen de manera cuidadosa y efectiva. Sus clases son amenas y el espacio muy cómodo."</p>
+                    <p data-i18n="testimonial-3">"Los ejercicios postparto que trabajo con Karina son lo que buscaba para dar fuerza a mi abdomen de manera cuidadosa y efectiva. Sus clases son amenas y el espacio muy cómodo."</p>
                     <div class="client-info">
-                        <p class="client-name">- Valeria</p>
-                        <p>Ejercicios Postparto</p>
+                        <p class="client-name" data-i18n="testimonial-3-name">- Valeria</p>
+                        <p data-i18n="testimonial-3-tag">Ejercicios Postparto</p>
                     </div>
                 </div>
                 <div class="testimonial-card">
-                    <p>"Muy conforme con las clases de pilates, Karina es súper cordial y amena, realiza los ejercicios adecuados dependiendo de lo que una necesita. El espacio es muy acogedor y está equipado con todo lo necesario."</p>
+                    <p data-i18n="testimonial-4">"Muy conforme con las clases de pilates, Karina es súper cordial y amena, realiza los ejercicios adecuados dependiendo de lo que una necesita. El espacio es muy acogedor y está equipado con todo lo necesario."</p>
                     <div class="client-info">
-                        <p class="client-name">- Claudia C.</p>
-                        <p>Pilates Mat</p>
+                        <p class="client-name" data-i18n="testimonial-4-name">- Claudia C.</p>
+                        <p data-i18n="testimonial-4-tag">Pilates Mat</p>
                     </div>
                 </div>
                 <div class="testimonial-card">
-                    <p>"Entrenar en el Estudio Fit es muy cómodo para mi, ya que es un ambiente calmado y amigable estructuralmente, además las sesiones se adecuan completamente a mis necesidades, si algún día tengo alguna fatiga la sesión se puede hacer más 'liviana', o si llego con las energía la profe me hace las ejercicios y aumentamos los pesos."</p>
+                    <p data-i18n="testimonial-5">"Entrenar en el Estudio Fit es muy cómodo para mi, ya que es un ambiente calmado y amigable estructuralmente, además las sesiones se adecuan completamente a mis necesidades, si algún día tengo alguna fatiga la sesión se puede hacer más 'liviana', o si llego con las energía la profe me hace las ejercicios y aumentamos los pesos."</p>
                     <div class="client-info">
-                        <p class="client-name">- Valentina O.</p>
-                        <p>Circuitos de fuerza</p>
+                        <p class="client-name" data-i18n="testimonial-5-name">- Valentina O.</p>
+                        <p data-i18n="testimonial-5-tag">Circuitos de fuerza</p>
                     </div>
                 </div>
                 <div class="testimonial-card">
-                    <p>"Destaco la amabilidad y cercanía de la profe, siempre muy preocupada por tener un espacio grato para mí (y todas), siempre atenta a mis necesidades (música, fuerza, conversación, cuando me falta algo). Muchas gracias por el espacio! Ojalá poder seguir por muchos meses más 💛"</p>
+                    <p data-i18n="testimonial-6">"Destaco la amabilidad y cercanía de la profe, siempre muy preocupada por tener un espacio grato para mí (y todas), siempre atenta a mis necesidades (música, fuerza, conversación, cuando me falta algo). Muchas gracias por el espacio! Ojalá poder seguir por muchos meses más 💛"</p>
                     <div class="client-info">
-                        <p class="client-name">- Cliente Satisfecha</p>
+                        <p class="client-name" data-i18n="testimonial-6-name">- Cliente Satisfecha</p>
                     </div>
                 </div>
             </div>
@@ -938,16 +998,16 @@
 
     <section id="location" class="location">
         <div class="container">
-            <h2 class="section-title">Ubicación</h2>
+            <h2 class="section-title" data-i18n="location-title">Ubicación</h2>
             <div class="location-container">
                 <div class="location-info">
-                    <h3>Visítanos</h3>
-                    <p>Luis Thayer Ojeda 183, Providencia, Santiago</p>
-                    <p><strong>Horarios PM:</strong><br>
-                    Lunes a Viernes: 15:00 - 21:00</p>
-                    <p><strong>Horarios AM:</strong><br>
-                    Miércoles: 09:00 - 12:00</p>
-                    <a href="#contact" class="btn">Agendar Visita</a>
+                    <h3 data-i18n="location-visit">Visítanos</h3>
+                    <p data-i18n="location-address">Luis Thayer Ojeda 183, Providencia, Santiago</p>
+                    <p><strong data-i18n="location-hours-pm">Horarios PM:</strong><br>
+                    <span data-i18n="location-hours-pm-text">Lunes a Viernes: 15:00 - 21:00</span></p>
+                    <p><strong data-i18n="location-hours-am">Horarios AM:</strong><br>
+                    <span data-i18n="location-hours-am-text">Miércoles: 09:00 - 12:00</span></p>
+                    <a href="#contact" class="btn" data-i18n="location-btn">Agendar Visita</a>
                 </div>
                 <div class="map-container">
                     <!-- Google Maps Embed for Luis Thayer Ojeda 183 -->
@@ -959,10 +1019,10 @@
 
     <section id="contact" class="contact">
         <div class="contact-container">
-            <h1 class="contact-title"><b>Contacto</b></h1>
+            <h1 class="contact-title"><b data-i18n="contact-title">Contacto</b></h1>
             <hr class="contact-divider">
             <div class="form-container">
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfYy9IvXnS7ZOXPzqvseK9P_XZRIj9_FcCoDmAbQhPEAw52-Q/viewform?embedded=true&showTitle=0" width="100%" height="1000" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfYy9IvXnS7ZOXPzqvseK9P_XZRIj9_FcCoDmAbQhPEAw52-Q/viewform?embedded=true&showTitle=0" width="100%" height="1000" frameborder="0" marginheight="0" marginwidth="0"><span data-i18n="contact-loading">Cargando…</span></iframe>
             </div>
         </div>
     </section>
@@ -972,11 +1032,10 @@
             <div class="footer-content">
                 <div class="logo">KZ.Fit Studio</div>
                 <ul class="social-links">
-                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                    <li><a href="https://www.instagram.com/kzfitstudio" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://www.linkedin.com/in/karina-zu%C3%B1iga-a327481a4/" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
                 </ul>
-                <p class="copyright">© 2025 KZ.Fit Studio. Todos los derechos reservados.</p>
+                <p class="copyright" data-i18n="footer-copyright">© 2025 KZ.Fit Studio. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
@@ -1007,6 +1066,178 @@
                 overlay.classList.remove('open');
             });
         });
+
+        // Language Toggle
+        const translations = {
+            es: {
+                'nav-home': 'Inicio',
+                'nav-about': 'Sobre Mí',
+                'nav-classes': 'Clases',
+                'nav-studio': 'Mi Studio',
+                'nav-pricing': 'Precios',
+                'nav-testimonials': 'Testimonios',
+                'nav-location': 'Ubicación',
+                'nav-contact': 'Contacto',
+                'hero-subtitle': 'Experiencia de fitness boutique con entrenamientos personalizados, exclusivo para mujeres en un ambiente cómodo y libre de juicios.',
+                'hero-btn': 'Reserva tu Clase',
+                'about-title': 'Tu Coach Personal',
+                'about-p1': '<li>Preparadora Física</li><li>Instructora Especializada en el Método Pilates</li><li>Certificación en Técnicas de Gimnasia Hipopresiva</li><li>Especialista en Entrenamiento de Intervalos de Alta Intensidad (HIIT)</li>',
+                'about-p2': 'Me encantaría compartir la visión del ejercicio físico como una experiencia de bienestar con clases dinámicas y llenas de energía.',
+                'about-p3': 'Mi misión es que el ejercicio se convierta en tu herramienta para sentirte más fuerte, con más confianza y mucha más energía para tu vida diaria. ¡Trabajemos juntas!',
+                'services-title': 'Nuestras Clases',
+                'service-barre-title': 'Barré',
+                'service-barre-desc': 'Clases que integran movimientos de ballet y pilates creando una rutina de entrenamiento que ¡quema!. Tus aliados serán las bandas, tobilleras y la barra donde aprenderás a sostener tu eje y propio peso.',
+                'service-circuit-title': 'Circuitos de Fuerza',
+                'service-circuit-desc': 'Cada ejercicio se realiza durante un periodo de tiempo con breves descansos entre cada uno. Una vez completada la serie, se repite el circuito varias veces. Será un reto a tu fuerza y resistencia.',
+                'service-pilates-title': 'Pilates Mat/Wunda',
+                'service-pilates-desc': 'Trabajamos con ejercicios y movimientos coordinados sobre el mat, sumando retos de equilibrio y estabilidad para progresar con diversos implementos que harán que tu clase pase volando.',
+                'studio-title': 'Mi Studio',
+                'studio-desc': 'Un espacio diseñado exclusivamente para tu comodidad y bienestar. Mi Studio boutique ofrece un ambiente íntimo, limpio y equipado con todo lo necesario para que disfrutes de una experiencia de entrenamiento personalizada.',
+                'pricing-title': 'Planes y Precios',
+                'pricing-4-title': '4 Clases',
+                'pricing-4-price': '$53.000',
+                'pricing-4-feat1': '1 vez por semana',
+                'pricing-4-feat2': 'Sesión de 50 minutos',
+                'pricing-4-feat3': 'Informe de valoración física',
+                'pricing-4-feat4': 'Seguimiento de tus avances',
+                'pricing-8-title': '8 Clases',
+                'pricing-8-price': '$91.000',
+                'pricing-8-feat1': '2 veces por semana',
+                'pricing-8-feat2': 'Sesión de 50 minutos',
+                'pricing-8-feat3': 'Informe de valoración física',
+                'pricing-8-feat4': 'Seguimiento de tus avances',
+                'pricing-12-title': '12 Clases',
+                'pricing-12-price': '$133.000',
+                'pricing-12-feat1': '3 veces por semana',
+                'pricing-12-feat2': 'Sesión de 50 minutos',
+                'pricing-12-feat3': 'Informe de valoración física',
+                'pricing-12-feat4': 'Seguimiento de tus avances',
+                'pricing-btn': 'Reservar',
+                'testimonials-title': 'Testimonios',
+                'testimonial-1': '"Sus clases son dinámicas, me encanta el concepto personalizado porque corrige, es atenta a dar variaciones en el ejercicio y mantiene seguimiento del progreso, y voy vestida de la manera más cómoda posible."',
+                'testimonial-1-name': '- Laura Gib',
+                'testimonial-1-tag': 'Circuitos de fuerza',
+                'testimonial-2': '"¡La mejor coach! Sus clases son exigentes y con mucha preocupación por las necesidades y capacidades de cada alumna. Se nota su gran preparación haciendo clases variadas y entretenidas. ¡Super recomendada!"',
+                'testimonial-2-name': '- Irene A.',
+                'testimonial-3': '"Los ejercicios postparto que trabajo con Karina son lo que buscaba para dar fuerza a mi abdomen de manera cuidadosa y efectiva. Sus clases son amenas y el espacio muy cómodo."',
+                'testimonial-3-name': '- Valeria',
+                'testimonial-3-tag': 'Ejercicios Postparto',
+                'testimonial-4': '"Muy conforme con las clases de pilates, Karina es súper cordial y amena, realiza los ejercicios adecuados dependiendo de lo que una necesita. El espacio es muy acogedor y está equipado con todo lo necesario."',
+                'testimonial-4-name': '- Claudia C.',
+                'testimonial-4-tag': 'Pilates Mat',
+                'testimonial-5': '"Entrenar en el Estudio Fit es muy cómodo para mi, ya que es un ambiente calmado y amigable estructuralmente, además las sesiones se adecuan completamente a mis necesidades, si algún día tengo alguna fatiga la sesión se puede hacer más \'liviana\', o si llego con las energía la profe me hace las ejercicios y aumentamos los pesos."',
+                'testimonial-5-name': '- Valentina O.',
+                'testimonial-5-tag': 'Circuitos de fuerza',
+                'testimonial-6': '"Destaco la amabilidad y cercanía de la profe, siempre muy preocupada por tener un espacio grato para mí (y todas), siempre atenta a mis necesidades (música, fuerza, conversación, cuando me falta algo). Muchas gracias por el espacio! Ojalá poder seguir por muchos meses más 💛"',
+                'testimonial-6-name': '- Cliente Satisfecha',
+                'location-title': 'Ubicación',
+                'location-visit': 'Visítanos',
+                'location-address': 'Luis Thayer Ojeda 183, Providencia, Santiago',
+                'location-hours-pm': 'Horarios PM:',
+                'location-hours-pm-text': 'Lunes a Viernes: 15:00 - 21:00',
+                'location-hours-am': 'Horarios AM:',
+                'location-hours-am-text': 'Miércoles: 09:00 - 12:00',
+                'location-btn': 'Agendar Visita',
+                'contact-title': 'Contacto',
+                'contact-loading': 'Cargando…',
+                'footer-copyright': '© 2025 KZ.Fit Studio. Todos los derechos reservados.',
+            },
+            en: {
+                'nav-home': 'Home',
+                'nav-about': 'About Me',
+                'nav-classes': 'Classes',
+                'nav-studio': 'My Studio',
+                'nav-pricing': 'Pricing',
+                'nav-testimonials': 'Testimonials',
+                'nav-location': 'Location',
+                'nav-contact': 'Contact',
+                'hero-subtitle': 'Boutique fitness experience with personalized training, exclusively for women in a comfortable, judgment-free environment.',
+                'hero-btn': 'Book Your Class',
+                'about-title': 'Your Personal Coach',
+                'about-p1': '<li>Physical Trainer</li><li>Specialized Pilates Method Instructor</li><li>Certification in Hypopressive Gymnastics Techniques</li><li>High-Intensity Interval Training (HIIT) Specialist</li>',
+                'about-p2': 'I would love to share the vision of physical exercise as a wellness experience with dynamic, energetic classes.',
+                'about-p3': 'My mission is for exercise to become your tool to feel stronger, more confident, and with much more energy for your daily life. Let\'s work together!',
+                'services-title': 'Our Classes',
+                'service-barre-title': 'Barré',
+                'service-barre-desc': 'Classes that integrate ballet and pilates movements creating a training routine that burns! Your allies will be bands, ankle weights, and the barre where you\'ll learn to support your core and body weight.',
+                'service-circuit-title': 'Strength Circuits',
+                'service-circuit-desc': 'Each exercise is performed for a set period with short rests in between. Once the series is completed, the circuit is repeated several times. It will be a challenge to your strength and endurance.',
+                'service-pilates-title': 'Pilates Mat/Wunda',
+                'service-pilates-desc': 'We work with coordinated exercises and movements on the mat, adding balance and stability challenges to progress with various implements that will make your class fly by.',
+                'studio-title': 'My Studio',
+                'studio-desc': 'A space designed exclusively for your comfort and well-being. My boutique studio offers an intimate, clean environment equipped with everything you need to enjoy a personalized training experience.',
+                'pricing-title': 'Plans & Pricing',
+                'pricing-4-title': '4 Classes',
+                'pricing-4-price': '$53.000 CLP',
+                'pricing-4-feat1': '1 time per week',
+                'pricing-4-feat2': '50-minute session',
+                'pricing-4-feat3': 'Physical assessment report',
+                'pricing-4-feat4': 'Progress tracking',
+                'pricing-8-title': '8 Classes',
+                'pricing-8-price': '$91.000 CLP',
+                'pricing-8-feat1': '2 times per week',
+                'pricing-8-feat2': '50-minute session',
+                'pricing-8-feat3': 'Physical assessment report',
+                'pricing-8-feat4': 'Progress tracking',
+                'pricing-12-title': '12 Classes',
+                'pricing-12-price': '$133.000 CLP',
+                'pricing-12-feat1': '3 times per week',
+                'pricing-12-feat2': '50-minute session',
+                'pricing-12-feat3': 'Physical assessment report',
+                'pricing-12-feat4': 'Progress tracking',
+                'pricing-btn': 'Book Now',
+                'testimonials-title': 'Testimonials',
+                'testimonial-1': '"Her classes are dynamic, I love the personalized concept because she corrects, is attentive to giving variations in the exercise and keeps track of progress, and I can dress as comfortably as possible."',
+                'testimonial-1-name': '- Laura Gib',
+                'testimonial-1-tag': 'Strength Circuits',
+                'testimonial-2': '"The best coach! Her classes are challenging and she cares deeply about each student\'s needs and abilities. Her great preparation shows in varied and entertaining classes. Highly recommended!"',
+                'testimonial-2-name': '- Irene A.',
+                'testimonial-3': '"The postpartum exercises I do with Karina are exactly what I needed to strengthen my abdomen carefully and effectively. Her classes are enjoyable and the space is very comfortable."',
+                'testimonial-3-name': '- Valeria',
+                'testimonial-3-tag': 'Postpartum Exercise',
+                'testimonial-4': '"Very satisfied with the Pilates classes. Karina is super cordial and pleasant, she does the right exercises depending on what you need. The space is very welcoming and equipped with everything necessary."',
+                'testimonial-4-name': '- Claudia C.',
+                'testimonial-4-tag': 'Pilates Mat',
+                'testimonial-5': '"Training at Fit Studio is very comfortable for me, as it\'s a calm and friendly environment. The sessions are fully adapted to my needs — if I\'m tired, the session can be lighter, or if I have energy, we increase the weights."',
+                'testimonial-5-name': '- Valentina O.',
+                'testimonial-5-tag': 'Strength Circuits',
+                'testimonial-6': '"I highlight the kindness and closeness of the coach, always very concerned about creating a pleasant space for me (and everyone), always attentive to my needs (music, strength, conversation, when I need something). Thank you so much for the space! I hope to continue for many more months 💛"',
+                'testimonial-6-name': '- Satisfied Client',
+                'location-title': 'Location',
+                'location-visit': 'Visit Us',
+                'location-address': 'Luis Thayer Ojeda 183, Providencia, Santiago',
+                'location-hours-pm': 'PM Hours:',
+                'location-hours-pm-text': 'Monday to Friday: 3:00 PM - 9:00 PM',
+                'location-hours-am': 'AM Hours:',
+                'location-hours-am-text': 'Wednesday: 9:00 AM - 12:00 PM',
+                'location-btn': 'Schedule a Visit',
+                'contact-title': 'Contact',
+                'contact-loading': 'Loading…',
+                'footer-copyright': '© 2025 KZ.Fit Studio. All rights reserved.',
+            }
+        };
+
+        let currentLang = 'es';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'es' ? 'en' : 'es';
+            applyLanguage(currentLang);
+        }
+
+        function applyLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.getElementById('lang-btn').textContent = lang === 'es' ? 'EN' : 'ES';
+            document.getElementById('mobile-lang-btn').textContent = lang === 'es' ? 'EN' : 'ES';
+            document.title = lang === 'es'
+                ? 'KZ.Fit Studio | Entrenamiento Personal para Mujeres'
+                : 'KZ.Fit Studio | Personal Training for Women';
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.dataset.i18n;
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+        }
     </script>
 </body>
 </html>
